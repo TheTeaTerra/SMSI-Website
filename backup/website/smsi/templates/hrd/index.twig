@@ -1,0 +1,22 @@
+{% extends "_layouts/default" %}
+
+{% set posts = craft.entries.section('blog').all() %}
+{% block content %}
+
+<!-- ======= blog Section ======= -->
+<section id="blog" class="blog section-bg-gray">
+	<div class="container" data-aos="fade-up">
+
+		<div class="section-title">
+			<h2>blog</h2>
+			{{ dump(posts) }}
+			<h1 class="text-4xl text-block font-display my-4">Human Resources</h1>
+			{% include "_includes/listing" with { posts: posts } only %}
+		</div>
+
+		<div class="row">
+		</div>
+
+	</div>
+</section>
+{% endblock %}

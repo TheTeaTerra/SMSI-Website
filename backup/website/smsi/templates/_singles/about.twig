@@ -1,0 +1,32 @@
+<section id="about" class="about" data-aos="fade-up">
+{% set abouts = craft.entries.section('about').all()  %}
+{% for about in abouts %}
+    <div class="container">
+        <div class="section-title">
+            <h2>{{ about.title }}</h2>
+            <p>{{ about.body }}</p>
+        </div>
+        <div class="row content">
+        {% set aboutBody = about.postContent.all() %}
+        {% if aboutBody | length %}
+            {% for block in aboutBody %}
+                {% if block.type == 'text' and loop.index == 1 %}
+                    <div class="col-lg-6">
+                        {{ block.text  }}
+                    </div> 
+                {% elseif  block.type == 'image' and loop.index == 2 %}
+                    {% for image in block.image.all() %}
+                        <div class="col-lg-6 pt-4 pt-lg-0">
+                            <img src="{{ image.getUrl(medium) }}" height="{{ image.getHeight(setImage)  }}" alt="{{ image.title }}" data-aos="zoom-in" data-aos-delay="100" />
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+{% endfor %}
+</section>
+
+

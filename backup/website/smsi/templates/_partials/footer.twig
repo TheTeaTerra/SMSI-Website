@@ -1,0 +1,12 @@
+<footer id="footer">
+    <div class="container">
+      <div class="footer-info d-flex flex-column justify-content-center align-items-center">
+          <div class="logo">
+            <img src="{{ logo.getURL(logoImg) }}" alt="{{ siteInfo.title }}" class="">              
+          </div>
+          <p>{{ siteInfo.companyName }}</p>
+      </div>
+      {{ footer.description|markdown }}
+      <p>&copy; {{ now | date('Y') }}, built with <a class="text-blue-600" href="https://craftcms.com">{{ siteInfo.copyrightNotice }}</a></p>
+    </div>
+  </footer>

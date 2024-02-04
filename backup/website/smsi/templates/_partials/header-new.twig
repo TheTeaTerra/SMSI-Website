@@ -1,0 +1,37 @@
+{% set navigation = craft.entries.section('navigation') %}
+{{ siteUrl }}
+<header id="header" class="fixed-top ">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 d-flex align-items-center justify-content-between">
+                {# <h1 class="logo"><a href="index.html">KnightOne</a></h1> #}
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <a href="{{ siteUrl }}" class="logo"> <img src="{{ logo.url }}" alt="" class="img-fluid"></a>
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                    {% for page in navigation %}
+                        {% if page.level == 1 %}
+                        <li class="{{ craft.app.request.getSegment(1) == page.slug|replace({'-': ''}) ? "active" : "" }}{{ page.children | length ? "dropdown" : "" }}">
+                            <a class="nav-link scrollto" href="{{ page.linkUrl }}">{{- page.title|ucfirst -}}
+                            {% if page.children | length %}
+                            <i class="bi bi-chevron-down"></i></a>
+                            {% endif %}
+                            </a>
+                        {% endif %}
+                        {% if page.children | length %}
+                            <ul>
+                            {% set childPage = page.children %}
+                            {% for child in childPage %}
+                                <li><a href="{{ siteUrl }}{{ child.linkUrl }}">{{ child.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                        </li>
+                    {% endfor %}
+                </nav>
+                <!-- .nav-menu -->
+                {# <a href="#about" class="get-started-btn scrollto">Get Started</a> #}
+            </div>
+        </div>
+    </div>
