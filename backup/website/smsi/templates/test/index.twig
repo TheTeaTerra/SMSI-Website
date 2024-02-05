@@ -1,8 +1,48 @@
 {% extends "_layouts/app" %}
 
-{% set posts = craft.entries.section('blog').all() %}
-
+{% set teams = craft.entries.section('teams').all() %}
+{% set count = 0 %}
 {% block content %}
-	<h1 class="text-4xl text-block font-display my-4">Testr</h1>
-	{% include "_includes/listing" with { posts: posts } only %}
+<div id="our-team">
+	<div class="container">
+		{% for team in teams %}
+		{% set count = count + 1 %}
+		{% if team.slug == 'egawa-taiki' %}
+		<div class="text-center">
+			<h3>Our Team</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur
+				adipisicing elit</p>
+		</div>
+		<div class="row president">
+			{% set body = team.teamBody %}
+			{% for block in body %}
+			<div class="col align-self-center wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="text-center">
+					<img class="rounded-circle img-responsive" src="{{ block.image.one.url }}" alt="">
+					<h2>{{ team.title }}</h2>
+					<h4>{{ block.heading }}</h4>
+					<p>{{ block.description }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+			{% if count == 2 %} <div class="row team"> {% endif %}	
+			{% set body = team.teamBody %}
+			{% for block in body %}
+			<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="text-center">
+					<img src="{{ block.image.one.url }}" class="img-responsive" alt="">
+					<h2>{{ team.title }}</h2>
+					<h4>{{ block.heading }}</h4>
+					<p>{{ block.description }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		{% endif %}
+		{% endfor %}
+		</div>
+	</div>
+</div>
+<!--/#our-team-->
 {% endblock %}

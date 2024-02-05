@@ -2424,6 +2424,9 @@ ul.sidebar-gallery {
 /******************
  404 page css
  ******************/
+#error.container {
+  margin-top: 10%;
+} 
 
 #error .btn-success:hover, 
 .btn-success:focus, 

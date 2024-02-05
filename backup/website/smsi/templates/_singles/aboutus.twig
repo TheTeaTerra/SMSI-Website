@@ -35,8 +35,7 @@
 
 
 <!-- ======= Team Section ======= -->
-
-<section id="team" class="team section-bg-gray">
+{# <section id="team" class="team section-bg-gray">
     <div class="container" data-aos="fade-up">
         <div class="section-title">
             <h2>Our Team</h2>
@@ -67,7 +66,7 @@
                                 <div class="member-info">
                                     <h4>{{ team.title }}</h4>
                                     <span>{{ block.heading }}</span>
-                                    <p>{{ block.text }}</p>
+                                    <p>{{ block.description }}</p>
                                     {% endif %}
                                     {% endfor %}
                                     {% set sosmedAccounts = team.socialMediaAccount %}
@@ -100,7 +99,51 @@
         </div>
 
     </div>
-</section>
+</section> #}
+
+{% set teams = craft.entries.section('teams').all() %}
+{% set count = 0 %}
+<div id="our-team">
+	<div class="container">
+		{% for team in teams %}
+		{% set count = count + 1 %}
+		{% if team.slug == 'egawa-taiki' %}
+		<div class="text-center">
+			<h3>Our Team</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur
+				adipisicing elit</p>
+		</div>
+		<div class="row president">
+			{% set body = team.teamBody %}
+			{% for block in body %}
+			<div class="col align-self-center wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="text-center">
+					<img class="rounded-circle img-responsive" src="{{ block.image.one.url }}" alt="">
+					<h2>{{ team.title }}</h2>
+					<h4>{{ block.heading }}</h4>
+					<p>{{ block.description }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+			{% if count == 2 %} <div class="row team"> {% endif %}	
+			{% set body = team.teamBody %}
+			{% for block in body %}
+			<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="text-center">
+					<img src="{{ block.image.one.url }}" class="img-responsive" alt="">
+					<h2>{{ team.title }}</h2>
+					<h4>{{ block.heading }}</h4>
+					<p>{{ block.description }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		{% endif %}
+		{% endfor %}
+		</div>
+	</div>
+</div>
 
 
 

@@ -1,5 +1,28 @@
 {% set navigation = craft.entries.section('navigation') %}
-{{ siteUrl }}
+{% set segments = craft.request.getSegments() %}
+{% set segment = "/" ~ segments|join('/') %}
+{{ segment }}
+{% set activeLinkUrl = [] %}
+{% for nav in navigation %}
+    {% set activeLinkUrl = activeLinkUrl|merge([nav.linkUrl]) %}
+    {% if segment == nav.linkUrl %}
+        {{ nav.title }}
+    {% endif %}
+{% endfor %}
+
+
+{% set activeLinkUrl = "/" ~ activeLinkUrl|join('/') %}
+{{ activeLinkUrl }}
+
+{% if segment not in activeLinkUrl %}
+    <h1> tests</h1>
+{% endif %}
+
+{% if block['title'] is defined %}
+    // Do your thing
+    {{ tests }}
+{% endif %}
+{# {{ pages }} #}
 <header id="header" class="fixed-top ">
     <div class="container-fluid">
         <div class="row justify-content-center">

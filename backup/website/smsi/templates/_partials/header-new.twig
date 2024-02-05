@@ -1,6 +1,12 @@
 {% set navigation = craft.entries.section('navigation') %}
-{{ siteUrl }}
-<header id="header" class="fixed-top ">
+{% set segments = craft.request.getSegments() %}
+{% set segment = "/" ~ segments|join('/') %}
+{% set activeLinkUrl = [] %}
+{% for nav in navigation %}
+    {% set activeLinkUrl = activeLinkUrl|merge([nav.linkUrl]) %}
+{% endfor %}
+
+<header id="header" class="fixed-top" {% if segment not in activeLinkUrl %}style="background-color: #0f0f0f;"{% endif %}>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-xl-9 d-flex align-items-center justify-content-between">
@@ -12,7 +18,7 @@
                     <ul>
                     {% for page in navigation %}
                         {% if page.level == 1 %}
-                        <li class="{{ craft.app.request.getSegment(1) == page.slug|replace({'-': ''}) ? "active" : "" }}{{ page.children | length ? "dropdown" : "" }}">
+                        <li class="{{ craft.app.request.getSegment(1) == page.slug|replace({'-': ''}) ? "active" : "" }} {{ page.children | length ? "dropdown" : "" }}">
                             <a class="nav-link scrollto" href="{{ page.linkUrl }}">{{- page.title|ucfirst -}}
                             {% if page.children | length %}
                             <i class="bi bi-chevron-down"></i></a>
@@ -35,3 +41,5 @@
             </div>
         </div>
     </div>
+    
+  </header><!-- End Header -->

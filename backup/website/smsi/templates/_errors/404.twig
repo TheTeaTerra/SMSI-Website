@@ -1,14 +1,13 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
 {% set entryTitle = '404' %}
-
 {% extends "_layouts/app" %}
-
 {% block content %}
+    
     <section id="error" class="container text-center">
-    {{ craft.app.request.getSegment(1) }}
         <h1>404, {{ 'Page Not Found'|t }}</h1>
         <p>The Page you are looking for doesn't exist or an other error occurred.</p>
         <a class="btn btn-primary" href="{{ siteUrl }}">GO BACK TO THE HOMEPAGE</a>
     </section><!--/#error-->
 
 {% endblock %}
+

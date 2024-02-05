@@ -5,6 +5,7 @@
 {% set small = craft.app.getAssetTransforms.getTransformByHandle('smalll') %}
 {% set thumb = craft.app.getAssetTransforms.getTransformByHandle('thumb') %}
 {% set homepage = craft.entries.section('home') %}
+
 <!DOCTYPE html>
 <html lang="{{ craft.app.language }}">
 
@@ -76,7 +77,7 @@
 	{% include "_partials/header-new" %}
 </body></html></header><!-- End Header --><!-- 
 	
-	======= Hero Section ======= -->{% include "_partials/hero" %}<!-- End Hero -->
+	======= Hero Section ======= -->{% include "_partials/hero-new" %}<!-- End Hero -->
 
 <main id="main">{% block content %}{% endblock %} </main>
 <!-- End #main -->
