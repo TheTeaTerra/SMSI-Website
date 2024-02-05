@@ -238,6 +238,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu .dropdown li {
   min-width: 180px;
   position: relative;
+  list-style: none;
 }
 
 .nav-menu .dropdown ul a {
@@ -431,8 +432,11 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100vh;
   /* background: url("../img/hero-bg.jpg") top center; */
-  background-size: cover;
   position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #hero:before {
@@ -537,6 +541,13 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 
+#hero.home {
+  width: 100%;
+  height: 80vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  position: relative;
+}
 
 #hero.single {
   height: 100vh !important;
@@ -1054,6 +1065,22 @@ section#team {
 .testimonials .owl-dot.active {
   background-color: #ed502e !important;
 }
+.testimonials .testimonial-item p {
+  font-style: italic;
+  margin: 15px auto 15px auto;
+}
+.testimonials .content-box {
+  margin: 3%; 
+}
+.testimonials .content-box img {
+  width: 100px;
+  border-radius: 10px;
+  border: 6px solid #ffefef;
+  background-size: cover;
+  position: absolute;
+  left: -37px;
+  top: 10px;
+}
 
 @media (max-width: 767px) {
   .testimonials .testimonial-wrap {
@@ -1075,7 +1102,7 @@ section#team {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 2% 0;
+  padding: 3% 0;
   overflow: hidden;
 }
 
@@ -1239,6 +1266,26 @@ section {
   color: #009961;
 }
 
+#service {
+  margin: 2% auto;
+}
+#service h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+#service .service-item {
+  padding: 1%;
+}
+#service .service-item .img-service {
+  width: 100%;
+  height: 60vh; 
+  max-height: 80vh;
+  object-fit: contain;
+}
+
 .service-box {
 	background: #fff;
 	border-bottom: 2px solid #f7f7f7;
@@ -1279,6 +1326,8 @@ p.service-body {
 .service-box {
   margin-bottom: 50px;
 }
+
+
 
 
 .home-section {

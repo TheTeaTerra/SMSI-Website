@@ -3,12 +3,18 @@
 <section id="service" class="service-detail">
     {% for item in entry.serviceBody %}
     <div class="container">
+        <h2 class="py-2">{{ entry.title }}</h2>
+        <hr>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="blog-item">
-                    <img class="img-responsive img-blog" src="{{ item.image.one.url }}" width="100%" alt="" />
-                    <div class="col-xs-12 col-sm-10 blog-content">
-                        <h2>{{ entry.title }}</h2>
+            <div class="col-lg-4">
+                <div class="service-item">
+                    <img class="img-responsive img-service" src="{{ item.image.one.url }}" width="100%" alt="" />
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="service-item">
+                    <div class="col-xs-12 col-sm-10 service-content">
+                        {# <h2>{{ entry.title }}</h2> #}
                         {{ item.description }}
                     </div>
                 </div>
@@ -17,44 +23,53 @@
         </div>
     </div>
     {% endfor %}
-    
+
     <!--/.blog-->
 </section>
 
-    {% if entry.slug == "hospital" %}
-    {% set categories = craft.categories()
+{% if entry.slug == "hospital" %}
+{% set categories = craft.categories()
         .group('testimonialCategories')
         .slug('hospital')
     %}
-    {% set testimonials = craft.entries.section('testimonials')
+{% set testimonials = craft.entries.section('testimonials')
     .relatedTo(categories) 
     %}
-    {{ testimonials | length }}
-    <section id="testimonials" class="testimonials">
-        <div class="container" data-aos="fade-up">
-            <div class="section-title">
-                <h2>Testimonials</h2>
-            </div>
-            <div class="{% if testimonials | length > 1 %} owl-carousel testimonials-carousel {% endif %}">
+{{ testimonials | length }}
+<section id="testimonials" class="testimonials bg-gray">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>Testimonials</h2>
+        </div>
+        <div class="{% if testimonials | length > 1 %} owl-carousel testimonials-carousel {% endif %}">
             {% for testimonial in testimonials %}
             <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                {% set blocks = testimonial.testimonialBody %}
-                {% for block in blocks %}
+                    {% set blocks = testimonial.testimonialBody %}
+                    {% for block in blocks %}
                     <img src="{{ block.image.one.url }}" class="testimonial-img" alt="{{ block.title }}">
                     <h3>{{ testimonial.title }}</h3>
                     <h4>{{ block.subheading }}</h4>
-                    <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        {{ block.text }}
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                    </p>
-                {% endfor %}
+                    <div class="row d-flex content-box justify-content-start d-flex align-items-start mt-5">
+                        <div class="col-sm-2">
+                            <img src="{{ block.image.one.url }}" class="img-responsive" alt="{{ block.title }}">
+                        </div>
+                        <div class="col">
+                            <h3>{{ testimonial.title }}</h3>
+                            <h4>{{ block.subheading }}</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                {{ block.text }}
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
             {% endfor %}
-            </div>
         </div>
-    </section>
-    {% endif %}
+    </div>
+</section>
+{% endif %}
 {% endblock %}

@@ -7,9 +7,11 @@
     {% set heroBlocks = entry.heroBody.all() %}
     {% if heroBlocks | length %}
     {% for hero in heroBlocks %}
-    <section id="hero" class="d-flex flex-column justify-content-center" style="
+    <section id="hero" class="home d-flex flex-column justify-content-center" style="
                 background: url({{ hero.image.one().url }}) top center;
                 background-attachment: fixed;
+                background-size: cover;
+                background-repeat: no-repeat;
             ">
         <div class="container">
         <div class="row justify-content-center">
@@ -66,7 +68,7 @@
       {% set heroBlocks = home.heroBody.all() %}
       {% if heroBlocks | length %}
         {% for hero in heroBlocks %}
-        <section id="hero" class="d-flex flex-column justify-content-center" style="
+        <section id="hero" class="home d-flex flex-column justify-content-center" style="
                     background: url({{ hero.image.one().url }}) top center;
                     background-attachment: fixed;
                 ">
@@ -91,8 +93,7 @@
         {% if heroBlocks | length %}
         {% for hero in heroBlocks %}
         <section id="hero" class="single d-flex flex-column justify-content-center" style="
-                    background: url({{ hero.image.one().url }}) top center;
-                    background-attachment: fixed;
+                    background: url({{ hero.image.one().url }});
                 ">
             <div class="container mb-2">
                 <div class="row justify-content-start">
