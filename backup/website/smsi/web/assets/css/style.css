@@ -960,7 +960,6 @@ section#team {
 #our-team .profile-picture {
   width: 100%;
   max-width: 25rem;
-  background: azure;
   padding: 2%;
   border-radius: 3%;
 }
@@ -986,8 +985,11 @@ section#team {
   font-size: 20px;
   font-weight: 700;
 }
-#our-team .text-center p {
-  font-size: 14px;
+#our-team .member-social span {
+  font-size: 12px;
+  color: white;
+  position: relative;
+    top: 100px;
 }
 
 #our-team .team img {
