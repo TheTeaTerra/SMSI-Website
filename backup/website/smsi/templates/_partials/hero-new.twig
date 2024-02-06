@@ -4,111 +4,120 @@
 {% set pages = craft.entries.section(segment) %}
 
 {% if segments | length > 1 %}
-    {% set heroBlocks = entry.heroBody.all() %}
-    {% if heroBlocks | length %}
-    {% for hero in heroBlocks %}
-    <section id="hero" class="home d-flex flex-column justify-content-center" style="
-                background: url({{ hero.image.one().url }}) top center;
-                background-attachment: fixed;
-                background-size: cover;
-                background-repeat: no-repeat;
-            ">
-        <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-8">
-            <h1>{{ hero.heading }}</h1>
-            <h2>{{ hero.subheading }}</h2>
-            {# <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
-                data-autoplay="true"></a> #}
-            </div>
-        </div>
-        </div>
-    </section>
-    {% endfor %}
-    {% endif %}
+	{% set heroBlocks = entry.heroBody.all() %}
+	{% if heroBlocks | length %}
+		{% for hero in heroBlocks %}
+		<section id="hero" class="home d-flex flex-column justify-content-center" style="
+			background: url({{ hero.image.one().url }}) top center;
+			background-attachment: fixed;
+			background-size: cover;
+			background-repeat: no-repeat;
+		">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-xl-8">
+						<h1>{{ hero.heading }}</h1>
+						<h2>{{ hero.subheading }}</h2>
+						{# <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
+						data-autoplay="true"></a> #}
+					</div>
+				</div>
+			</div>
+		</section>
+		{% endfor %}
+	{% endif %}
 {% elseif firstSegment == "" %}
-  {% for home in homepage %}
-    {% set sliders = home.sliderBody.all() %}
-    {% if sliders | length %}
-      <section id="hero">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-          <div class="carousel-inner" role="listbox">
-            {% for slider in sliders %}
-            {% if slider.image | length %}
-            {% set slideImg = slider.image.one.url %}
-            <!-- Slide 1 -->
-            <div class="carousel-item {{ loop.index == 1 ? 'active' : '' }}" style="background-image: url( {{ slideImg   }} );">
-              <div class="carousel-container">
-                <div class="carousel-content animated fadeInUp">
-                  <h2>{{ slider.heading }}</h2>
-                    <p>{{ slider.caption }} </p>
-                    <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
-                </div>
-              </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-          </div>
+	{% for home in homepage %}
+		{% set sliders = home.sliderBody.all() %}
+		{% if sliders | length %}
+			<section id="hero">
+				<div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						{% for slider in sliders %}
+						{% if slider.image | length %}
+						{% set slideImg = slider.image.one.url %}
+						<!-- Slide 1 -->
+						<div class="carousel-item {{ loop.index == 1 ? 'active' : '' }}"
+							style="background-image: url( {{ slideImg }} );">
+							<div class="carousel-container">
+								<div class="carousel-content animated fadeInUp">
+									<h2>{{ slider.heading }}</h2>
+									<p>{{ slider.caption }}
+									</p>
+									<div class="text-center">
+										<a href="" class="btn-get-started">Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+					</div>
 
-          <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
+					<a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
 
-          <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+					<a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+						<span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
 
-          <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+					<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-        </div>
-      </section>
-    {% else %}
-      {% set heroBlocks = home.heroBody.all() %}
-      {% if heroBlocks | length %}
-        {% for hero in heroBlocks %}
-        <section id="hero" class="home d-flex flex-column justify-content-center" style="
-                    background: url({{ hero.image.one().url }}) top center;
-                    background-attachment: fixed;
-                ">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-xl-8">
-                <h1>{{ hero.heading }}</h1>
-                <h2>{{ hero.subheading }}</h2>
-                {# <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
-                  data-autoplay="true"></a> #}
-              </div>
-            </div>
-          </div>
-        </section>
-        {% endfor %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
+				</div>
+			</section>
+		{% else %}
+			{% set heroBlocks = home.heroBody.all() %}
+			{% if heroBlocks | length %}
+			{% for hero in heroBlocks %}
+			<section id="hero" class="home d-flex flex-column justify-content-center" style="
+				background: url({{ hero.image.one().url }});
+				background-attachment: fixed;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center top;
+			">
+				<div class="container">
+					<div class="row justify-content-center box py-2">
+						<div class="col-xl-8">
+							<h1>{{ hero.heading }}</h1>
+							<h2>{{ hero.subheading }}</h2>
+							{# <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
+								data-autoplay="true"></a> #}
+						</div>
+					</div>
+				</div>
+			</section>
+			{% endfor %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
 {% else %}
-    {% for page in pages %}
-        {% set heroBlocks = page.heroBody.all() %}
-        {% if heroBlocks | length %}
-        {% for hero in heroBlocks %}
-        <section id="hero" class="single d-flex flex-column justify-content-center" style="
-                    background: url({{ hero.image.one().url }});
-                ">
-            <div class="container mb-2">
-                <div class="row justify-content-start">
-                    <div class="hero-box col-xl-6">
-                        <h2>{{ hero.subheading }}</h2>
-                        <h1>{{ hero.heading }}</h1>
-                        <p>{{ page.shortDescription }}</p>
-                        {# <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
-                            data-autoplay="true"></a> #}
-                    </div>
-                </div>
-            </div>
-        </section>
-        {% endfor %}
-        {% endif %}
-    {% endfor %}
+	{% for page in pages %}
+		{% set heroBlocks = page.heroBody.all() %}
+		{% if heroBlocks | length %}
+			{% for hero in heroBlocks %}
+			<section id="hero" class="single d-flex flex-column justify-content-center" style="
+				background: url({{ hero.image.one().url }});
+				background-attachment: fixed;
+				background-size: cover;
+				background-repeat: no-repeat;
+			">
+				<div class="container mb-2">
+					<div class="row justify-content-start">
+						<div class="hero-box col-xl-6">
+							<h2>{{ hero.subheading }}</h2>
+							<h1>{{ hero.heading }}</h1>
+							<p>{{ page.shortDescription }}</p>
+							{# <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
+							data-autoplay="true"></a> #}
+						</div>
+					</div>
+				</div>
+			</section>
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
 {% endif %}
-

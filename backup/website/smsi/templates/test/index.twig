@@ -4,72 +4,20 @@
 {% set count = 0 %}
 {% block content %}
 
-<div class="services">
-	<div class="container">
-		<h3>Company Services</h3>
-		<hr>
-		<div class="col-md-6">
-			<img src="images/4.jpg" class="img-responsive">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat
-				libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-				libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-				libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque</p>
-		</div>
-
-		<div class="col-md-6">
-			<div class="media">
-				<ul>
-					<li>
-						<div class="media-left">
-							<i class="fa fa-pencil"></i>
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading">Web Development</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat
-								libero, pulvinar tincidunt leo consectetur eget.</p>
-						</div>
-					</li>
-					<li>
-						<div class="media-left">
-							<i class="fa fa-book"></i>
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading">Responsive Design</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat
-								libero, pulvinar tincidunt leo consectetur eget.</p>
-						</div>
-					</li>
-					<li>
-						<div class="media-left">
-							<i class="fa fa-rocket"></i>
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading">Bootstrap Themes</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat
-								libero, pulvinar tincidunt leo consectetur eget.</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
 <div id="our-team">
-	<div class="container">
+	<div class="container text-center">
 		{% for team in teams %}
 		{% set count = count + 1 %}
 		{% if team.slug == 'egawa-taiki' %}
-		<div class="text-center">
-			<h3>Our Team</h3>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur
-				adipisicing elit</p>
-		</div>
+		<h3>Our Team</h3>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur
+			adipisicing elit</p>
 		<div class="row president">
 			{% set body = team.teamBody %}
 			{% for block in body %}
 			<div class="col align-self-center wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
 				<div class="text-center">
-					<img class="rounded-circle img-responsive" src="{{ block.image.one.url }}" alt="">
+					<img class="rounded-circle img-responsive img-fluid w-100 rounded-circle" src="{{ block.image.one.url }}" alt="">
 					<h2>{{ team.title }}</h2>
 					<h4>{{ block.heading }}</h4>
 					<p>{{ block.description }}</p>
@@ -83,7 +31,7 @@
 			{% for block in body %}
 			<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
 				<div class="text-center">
-					<img src="{{ block.image.one.url }}" class="img-responsive" alt="">
+					<img src="{{ block.image.one.url }}" class="img-responsive img-fluid w-100" alt="">
 					<h2>{{ team.title }}</h2>
 					<h4>{{ block.heading }}</h4>
 					<p>{{ block.description }}</p>
@@ -96,4 +44,47 @@
 	</div>
 </div>
 <!--/#our-team-->
+
+
+
+<!-- Team Start -->
+<div class="container-fluid py-5 my-5 teams">
+	<div class="container py-5">
+		<div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+			<h5 class="text-primary">Our Teams</h5>
+			<h1>Meet our expert Teams</h1>
+		</div>
+		<div class="owl-carousel teams-carousel" data-wow-delay=".5s">
+			{% for team in teams %}
+			{% set body = team.teamBody %}
+			{% for block in body %}
+			<div class="rounded teams-item">
+				<div class="teams-content">
+					<div class="teams-img-icon">
+						<div class="teams-img rounded-circle">
+							<img src="{{ block.image.one.url }}" class="img-fluid w-100 rounded-circle" alt="">
+						</div>
+						<div class="teams-name text-center py-3">
+							<h4 class="">{{ team.title }}</h4>
+							<p class="m-0">{{block.heading}}</p>
+						</div>
+						<div class="teams-icon d-flex justify-content-center pb-4">
+							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
+									class="fab fa-facebook-f"></i></a>
+							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
+									class="fab fa-twitter"></i></a>
+							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
+									class="fab fa-instagram"></i></a>
+							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
+									class="fab fa-linkedin-in"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<!-- Teams End -->
 {% endblock %}

@@ -47,9 +47,9 @@
                 <div class="testimonial-item">
                     {% set blocks = testimonial.testimonialBody %}
                     {% for block in blocks %}
-                    <img src="{{ block.image.one.url }}" class="testimonial-img" alt="{{ block.title }}">
-                    <h3>{{ testimonial.title }}</h3>
-                    <h4>{{ block.subheading }}</h4>
+                    <img src="{{ block.hospitalImage.one.url }}" class="testimonial-img" alt="{{ block.title }}">
+                    <h3>{{ block.hospitalName }}</h3>
+                    {# <h4>{{ block.subheading }}</h4> #}
                     <div class="row d-flex content-box justify-content-start d-flex align-items-start mt-5">
                         <div class="col-sm-2">
                             <img src="{{ block.image.one.url }}" class="img-responsive" alt="{{ block.title }}">
@@ -59,7 +59,7 @@
                             <h4>{{ block.subheading }}</h4>
                             <p>
                                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                {{ block.text }}
+                                {{ block.description }}
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
                         </div>

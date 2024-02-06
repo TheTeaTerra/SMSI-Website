@@ -94,7 +94,7 @@
                     <img src="{{ block.image.one.url() }}" class="img-fluid" alt="">
                     <div class="portfolio-info">
                       <h4>{{ block.heading }}</h4>
-                      <p>{{ block.text }}</p>
+                      <p>{{ block.description }}</p>
                       <a href="{{ block.image.one.url() }}" data-gall="portfolioGallery" class="venobox preview-link" title="App {{ i + 1 }}"><i class="bx bx-plus"></i></a>
                       <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                     </div>
@@ -193,7 +193,7 @@
                 <h4>{{ block.subheading }}</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    {{ block.text }}
+                    {{ block.description }}
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               {% endfor %}
