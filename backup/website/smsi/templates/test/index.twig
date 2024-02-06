@@ -12,29 +12,75 @@
 		<h3>Our Team</h3>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur
 			adipisicing elit</p>
-		<div class="row president">
+		<div class="d-flex justify-content-center">
 			{% set body = team.teamBody %}
 			{% for block in body %}
-			<div class="col align-self-center wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
-				<div class="text-center">
-					<img class="rounded-circle img-responsive img-fluid w-100 rounded-circle" src="{{ block.image.one.url }}" alt="">
+			<div class="team-leader-box wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="team-leader wow fadeInDown delay-03s animated">
+					<div class="team-leader-shadow"></div>
+					<img class="img-responsive img-fluid w-100 rounded-circle" src="{{ block.image.one.url }}" alt="">
+					<div class="member-social">
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-google-plus"></i></a>
+						<a href=""><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+				<div class="item-detail">
 					<h2>{{ team.title }}</h2>
-					<h4>{{ block.heading }}</h4>
+					<span class="wow fadeInDown delay-03s">{{ block.heading }}</p>
+					{# <h4 class="mb-4">{{ block.heading }}</h4>
+					<h3 class="wow fadeInDown delay-03s">{{ team.title }}</h3> #}
 					<p>{{ block.description }}</p>
 				</div>
 			</div>
+			{# <div class="team-leader-box">
+				<div class="team-leader wow fadeInDown delay-03s">
+					<div class="team-leader-shadow"></div>
+					<img class="img-responsive img-fluid w-100 rounded-circle" src="{{ block.image.one.url }}" alt="">
+					<ul>
+						<li><a href="javascript:void(0)" class="fa-twitter"></a></li>
+						<li><a href="javascript:void(0)" class="fa-facebook"></a></li>
+						<li><a href="javascript:void(0)" class="fa-pinterest"></a></li>
+						<li><a href="javascript:void(0)" class="fa-google-plus"></a></li>
+					</ul>
+				</div>
+				<h3 class="wow fadeInDown delay-03s">{{ team.title }}</h3>
+				<span class="wow fadeInDown delay-03s">{{ block.heading }}</p>
+			</div> #}
 			{% endfor %}
 		</div>
 		{% else %}
 		{% if count == 2 %} <div class="row team"> {% endif %}
 			{% set body = team.teamBody %}
 			{% for block in body %}
-			<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-				<div class="text-center">
+			{# <div class="col-md-3 text-center wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="profile-picture">
 					<img src="{{ block.image.one.url }}" class="img-responsive img-fluid w-100" alt="">
-					<h2>{{ team.title }}</h2>
-					<h4>{{ block.heading }}</h4>
-					<p>{{ block.description }}</p>
+					<div class="item-detail">
+						<h2>{{ team.title }}</h2>
+						<h4 class="mb-4">{{ block.heading }}</h4>
+						<p>{{ block.description }}</p>
+					</div>
+				</div>
+			</div> #}
+			
+			<div class="col-md-3 col-sm-6">
+				<div class="team-member profile-picture">
+					<div class="member-image">
+						<img class="img-responsive w-100" src="{{ block.image.one.url }}" alt="">
+						<div class="member-social">
+							<a href=""><i class="fa fa-facebook"></i></a>
+							<a href=""><i class="fa fa-twitter"></i></a>
+							<a href=""><i class="fa fa-google-plus"></i></a>
+							<a href=""><i class="fa fa-linkedin"></i></a>
+						</div>
+					</div>
+					<div class="item-detail">
+						<h2>{{ team.title }}</h2>
+						<h4 class="mb-4">{{ block.heading }}</h4>
+						<p>{{ block.description }}</p>
+					</div>
 				</div>
 			</div>
 			{% endfor %}
@@ -48,43 +94,148 @@
 
 
 <!-- Team Start -->
-<div class="container-fluid py-5 my-5 teams">
-	<div class="container py-5">
-		<div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-			<h5 class="text-primary">Our Teams</h5>
-			<h1>Meet our expert Teams</h1>
-		</div>
-		<div class="owl-carousel teams-carousel" data-wow-delay=".5s">
-			{% for team in teams %}
-			{% set body = team.teamBody %}
-			{% for block in body %}
-			<div class="rounded teams-item">
-				<div class="teams-content">
-					<div class="teams-img-icon">
-						<div class="teams-img rounded-circle">
-							<img src="{{ block.image.one.url }}" class="img-fluid w-100 rounded-circle" alt="">
+
+	<section id="our-team">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title">
+						<h1>Our Team</h1>
+						<span class="st-border"></span>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="team-member">
+						<div class="member-image">
+							<img class="img-responsive w-100" src="{{ siteUrl }}assets/img/members/team1.jpg" alt="">
+							<div class="member-social">
+								<a href=""><i class="fa fa-facebook"></i></a>
+								<a href=""><i class="fa fa-twitter"></i></a>
+								<a href=""><i class="fa fa-google-plus"></i></a>
+								<a href=""><i class="fa fa-linkedin"></i></a>
+							</div>
 						</div>
-						<div class="teams-name text-center py-3">
-							<h4 class="">{{ team.title }}</h4>
-							<p class="m-0">{{block.heading}}</p>
+						<div class="member-info">
+							<h4>Khalil Uddin</h4>
+							<span>Designer</span>
 						</div>
-						<div class="teams-icon d-flex justify-content-center pb-4">
-							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
-									class="fab fa-facebook-f"></i></a>
-							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
-									class="fab fa-twitter"></i></a>
-							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
-									class="fab fa-instagram"></i></a>
-							<a class="btn btn-square btn-secondary text-white rounded-circle m-1" href=""><i
-									class="fab fa-linkedin-in"></i></a>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="team-member">
+						<div class="member-image">
+							<img class="img-responsive w-100" src="{{ siteUrl }}assets/img/members/team2.jpg" alt="">
+							<div class="member-social">
+								<a href=""><i class="fa fa-facebook"></i></a>
+								<a href=""><i class="fa fa-twitter"></i></a>
+								<a href=""><i class="fa fa-google-plus"></i></a>
+								<a href=""><i class="fa fa-linkedin"></i></a>
+							</div>
+						</div>
+						<div class="member-info">
+							<h4>Rubel Miah</h4>
+							<span>Lead Developer</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="team-member">
+						<div class="member-image">
+							<img class="img-responsive w-100" src="{{ siteUrl }}assets/img/members/team1.jpg" alt="">
+							<div class="member-social">
+								<a href=""><i class="fa fa-facebook"></i></a>
+								<a href=""><i class="fa fa-twitter"></i></a>
+								<a href=""><i class="fa fa-google-plus"></i></a>
+								<a href=""><i class="fa fa-linkedin"></i></a>
+							</div>
+						</div>
+						<div class="member-info">
+							<h4>Shamim Shohag</h4>
+							<span>Developer</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="team-member">
+						<div class="member-image">
+							<img class="img-responsive w-100" src="{{ siteUrl }}assets/img/members/team2.jpg" alt="">
+							<div class="member-social">
+								<a href=""><i class="fa fa-facebook"></i></a>
+								<a href=""><i class="fa fa-twitter"></i></a>
+								<a href=""><i class="fa fa-google-plus"></i></a>
+								<a href=""><i class="fa fa-linkedin"></i></a>
+							</div>
+						</div>
+						<div class="member-info">
+							<h4>Zubayer Rahman</h4>
+							<span>Marketer</span>
 						</div>
 					</div>
 				</div>
 			</div>
-			{% endfor %}
-			{% endfor %}
 		</div>
-	</div>
-</div>
+	</section>
 <!-- Teams End -->
+
+
+
+<!--c-logo-part-end-->
+<section class="main-section team" id="team"><!--main-section team-start-->
+  <div class="container">
+    <h2>Amazing Team</h2>
+    <h6>Take a closer look into our amazing team. We won’t bite.</h6>
+    <div class="team-leader-block clearfix">
+      <div class="team-leader-box">
+        <div class="team-leader wow fadeInDown delay-03s">
+          <div class="team-leader-shadow"><a href="javascript:void(0)"></a></div>
+          <img src="{{ siteUrl }}assets/img/members/team1.jpg" alt="">
+          <ul>
+            <li><a href="javascript:void(0)" class="fa-twitter"></a></li>
+            <li><a href="javascript:void(0)" class="fa-facebook"></a></li>
+            <li><a href="javascript:void(0)" class="fa-pinterest"></a></li>
+            <li><a href="javascript:void(0)" class="fa-google-plus"></a></li>
+          </ul>
+        </div>
+        <h3 class="wow fadeInDown delay-03s">Walter White</h3>
+        <span class="wow fadeInDown delay-03s">Chief Executive Officer</span>
+        <p class="wow fadeInDown delay-03s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
+      </div>
+      <div class="team-leader-box">
+        <div class="team-leader  wow fadeInDown delay-06s">
+          <div class="team-leader-shadow"><a href="javascript:void(0)"></a></div>
+          <img src="img/team-leader-pic2.jpg" alt="">
+          <ul>
+            <li><a href="javascript:void(0)" class="fa-twitter"></a></li>
+            <li><a href="javascript:void(0)" class="fa-facebook"></a></li>
+            <li><a href="javascript:void(0)" class="fa-pinterest"></a></li>
+            <li><a href="javascript:void(0)" class="fa-google-plus"></a></li>
+          </ul>
+        </div>
+        <h3 class="wow fadeInDown delay-06s">Jesse Pinkman</h3>
+        <span class="wow fadeInDown delay-06s">Product Manager</span>
+        <p class="wow fadeInDown delay-06s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
+      </div>
+      <div class="team-leader-box">
+        <div class="team-leader wow fadeInDown delay-09s">
+          <div class="team-leader-shadow"><a href="javascript:void(0)"></a></div>
+          <img src="img/team-leader-pic3.jpg" alt="">
+          <ul>
+            <li><a href="javascript:void(0)" class="fa-twitter"></a></li>
+            <li><a href="javascript:void(0)" class="fa-facebook"></a></li>
+            <li><a href="javascript:void(0)" class="fa-pinterest"></a></li>
+            <li><a href="javascript:void(0)" class="fa-google-plus"></a></li>
+          </ul>
+        </div>
+        <h3 class="wow fadeInDown delay-09s">Skyler white</h3>
+        <span class="wow fadeInDown delay-09s">Accountant</span>
+        <p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--main-section team-end-->
 {% endblock %}
