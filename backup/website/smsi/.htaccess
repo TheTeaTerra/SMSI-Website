@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?smsindonesia.meetdoctor.id$
+RewriteCond %{REQUEST_URI} !^/smsi/web/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /smsi/web/$1
+RewriteCond %{HTTP_HOST} ^(www.)?smsindonesia.meetdoctor.id$
+RewriteRule ^(/)?$ smsi/web/index.php [L]

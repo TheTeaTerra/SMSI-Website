@@ -1,0 +1,605 @@
+{% extends "_layouts/app" %}
+
+{% block content %}
+
+    <!-- ======= About Us Section ======= -->
+    {# {% include "_singles/about" %} #}
+    <!-- End About Us Section -->
+
+    <!-- ======= Services Section ======= -->
+    <!--
+    <section id="services" class="services section-bg-gray">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          {{ entry.serviceText }}
+        </div>
+
+        <div class="row">
+        {% set services = craft.entries.section('services').all() %}
+        {% set count = 0 %}
+        {% for service in services %}
+          {% set serviceBody = service.serviceBody.all() %}
+          {% if serviceBody | length %}
+            {% for block in serviceBody %}
+              {% set count = count + 1 %}
+              {% if block.type == 'servicePoint' %}
+                <div class="col-lg-6 col-md-6 d-flex align-items-stretch
+                  {% if count == 1 %}
+                  {% elseif count == 2 %}
+                    mt-4 mt-lg-0
+                  {% else %}
+                    mt-4
+                  {% endif %}
+                " data-aos="zoom-in" data-aos-delay="{{ count }}00">
+                  
+                  <div class="icon-box">
+                    {# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
+                    <div class="image-box">
+                      <img src="{{ block.image.one.url }}" alt="{{ block.image.title }}"/>
+                    </div>
+                    <h4><a href="">{{ service.title }}</a></h4>
+                    <p>{{ block.description }} </p>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+        </div>
+
+      </div>
+    </section>
+    -->
+    {# <section id="service" class="home-section color-dark bg-gray p-0">
+      <div class="container my-5 py-5 text-center">
+        <div class="row pb-4">
+            <div class="col-lg-12">
+                <div>
+                    <div class="section-heading text-center">
+                        <h2 class="h-bold">What we can do for you</h2>
+                        <div class="divider-header"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row animatedParent">
+            {% set count = 0 %}
+            {% for service in services %}
+                {% set serviceBody = service.serviceBody.all() %}
+                {% if serviceBody | length %}
+                    {% for item in serviceBody %}
+                        {% if item.type == 'servicePoint' %}
+                            {% set count = count + 1 %}
+                            <div class="col-md-4">
+                                <div class="animated rotateInDownLeft">
+                                    <div class="service-box">
+                                        <div class="service-icon">
+                                          <img class="img-responsive" src="{{ item.image.one.url }}" alt="{{ item.image.title }}"/>
+                                        </div>
+                                        <div class="service-desc">
+                                            <h5>{{ service.title }}</h5>
+                                            <div class="divider-header"></div>
+                                            <p class="service-body">
+                                            {{ item.description|striptags|slice(0, 100) ~ '...'   }}
+                                            </p>
+                                            <a href="{{ service.url }}" class="btn btn-success">Learn more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+  </section> #}
+  <section id="service" class="portservice home-section color-dark bg-gray p-0">
+	<div class="container my-5 py-5 text-center">
+		<div class="row pb-4">
+			<div class="col-lg-12">
+				<div>
+					<div class="section-heading text-center">
+						<h2 class="h-bold">What we can do for you</h2>
+						<div class="divider-header"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row animatedParent">
+			{% set count = 0 %}
+			{% for service in services %}
+			{% set serviceBody = service.serviceBody.all() %}
+			{% if serviceBody | length %}
+			{% for item in serviceBody %}
+			{% if item.type == 'servicePoint' %}
+			{% set count = count + 1 %}
+			<div class="col-md-4">
+				<div class="animated rotateInDownLeft">
+					<div class="service-box portservice-item">
+						<figure class="animated rotateInDownLeft">
+							<div class="service-icon py-3">
+								<img src="{{ item.image.one.url }}" class="img-responsive w-100">
+							</div>
+							<figcaption class="text-center">
+								<div class="service-desc">
+									<h5>{{ service.title }}</h5>
+									<div class="divider-header"></div>
+									<div
+										class="service-body d-flex flex-column align-items-center justify-content-center">
+										<p>{{ item.description|striptags|slice(0, 200) ~ '...' }}
+										</p>
+										<a href="{{ service.url }}" class="my-3 btn btn-success">Learn more</a>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
+    <!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <!--
+    {% set actions = entry.actionText %}
+    {% if actions | length %}
+      {% for action in actions %}
+        {% if action.type == "actionPoint" %}
+          <section id="cta" class="cta" 
+            style="
+              background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{ action.image.one.url() }}) fixed center center;
+              background-size: cover;
+            ">
+            <div class="container" data-aos="zoom-in">
+
+              <div class="row">
+                <div class="col-lg-9 text-center text-lg-left">
+                  <h3>{{ action.heading }}</h3>
+                  <p> {{ action.text }} </p>
+                </div>
+                <div class="col-lg-3 cta-btn-container text-center">
+                  <a class="cta-btn align-middle" href="#">{{ action.heading }}</a>
+                </div>
+              </div>
+
+            </div>
+          </section
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    -->
+    <!-- End Cta Section -->
+
+    <!-- ======= Features Section ======= -->
+    {# <section id="features" class="features">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6 order-2 order-lg-1">
+            <div class="icon-box mt-5 mt-lg-0">
+              <i class="bx bx-receipt"></i>
+              <h4>Est labore ad</h4>
+              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+            </div>
+            <div class="icon-box mt-5">
+              <i class="bx bx-cube-alt"></i>
+              <h4>Harum esse qui</h4>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+            </div>
+            <div class="icon-box mt-5">
+              <i class="bx bx-images"></i>
+              <h4>Aut occaecati</h4>
+              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+            </div>
+            <div class="icon-box mt-5">
+              <i class="bx bx-shield"></i>
+              <h4>Beatae veritatis</h4>
+              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+            </div>
+          </div>
+          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("assets/img/features.jpg");'></div>
+        </div>
+
+      </div>
+    </section #}
+    <!-- End Features Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <!--
+    <section id="clients" class="clients">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Our Clients</h2>
+          <p> {{ entry.portfolioText }} </p>
+        </div>
+
+        <div id="clientCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% set clients = craft.entries.section('clients') %}
+            {% set count = 0 %}
+            {% if clients | length %}
+              {% for client in clients %}
+                {% set count = count + 1 %}
+                {% if count == 1 %}
+                <div class="carousel-item {{ loop.index == 1 ? 'active' : '' }}">
+                  <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+                {% endif %}
+                
+                {% set blocks = client.clientBody %}
+                {% if blocks | length %}
+                  {% for block in blocks %}
+                    {% if block.type == 'clientPoint' %}
+                      <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="client-logo">
+                          <img src="{{ block.image.one.url() }}" class="img-fluid" alt="">
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+                {% if count == 8 %}
+                    </div>
+                  </div>
+                  {% set count = 0 %}
+                {% endif %}
+                
+              {% endfor %}
+            {% endif %}
+          </div>
+          <a class="carousel-control-prev" href="#clientCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#clientCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+
+          <ol class="carousel-indicators" id="client-carousel-indicators"></ol>
+        </div>
+      </div>
+    </section>
+    -->
+    <!-- End Clients Section -->
+
+
+
+    <!-- ======= Counts Section ======= -->
+    <!--
+    <section id="counts" class="counts" data-aos="fade-up">
+      <div class="container">
+
+        <div class="text-center title">
+        {% for home in homepage %}
+        {% set achievementTexts = home.achievementText.all  %}
+            {% if achievementTexts | length  %}
+            {% for block in achievementTexts %}
+              <h3>{{ block.heading }}</h3>
+              <p>{{ block.subheading }}</p>
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
+
+        <div class="row counters">
+
+          {% for home in homepage %}
+          {% set achievements = home.achievement.all %}
+          {% if achievements | length %}
+            {% for achievement in achievements %}
+            <div class="col-lg-3 col-6 text-center">
+              <span data-toggle="counter-up">{{ achievement.count }}</span>
+              <p>{{ achievement.heading }}</p>
+            </div>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+
+        </div>
+
+      </div>
+    </section>
+    -->
+    <!-- End Counts Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <!--
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p> {{ entry.portfolioText }} </p>
+        </div>
+        
+        {% set portCategories = craft.categories().group('portfolioCategories') %}
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              {% for portCategory in portCategories %}
+                <li data-filter=".filter-{{ portCategory.slug }}">{{ portCategory.title }}</li>
+              {% endfor %}
+              <li data-filter="*" class="filter-active">All</li>
+            </ul>
+          </div>
+        </div>
+
+
+        {# Get the categories related to my "entrySection" entries in structure order #
+        {% set portfolios = craft.entries.section('portfolio') %}
+        {% set relatedCats = craft.categories.relatedTo(portfolios) %}
+        
+        {# Loop the categories #
+        {% for category in relatedCats %}
+          {{ category.title }}
+
+          {# Get and loop through entries related to this cat #
+          {% set relatedEntries = craft.entries.relatedTo(category) %}
+          {% for entry in relatedEntries %}
+            <pre>
+              {{ dump(entry.title) }}
+            </pre>
+          {% endfor %}
+        {% endfor %}
+        #}
+
+        <div class="row portfolio-container">
+          {% set portfolios = craft.entries.section('portfolio').limit(9) %}
+          {% for portfolio in portfolios %}
+            {% set portfolioBlock = portfolio.portfolioBody %}
+            {% set i = 0 %}
+            {% for block in portfolioBlock %}
+                
+                {% if block.type == 'portfolioPoint' %}
+                  {% set relatedCats = craft.categories.relatedTo(portfolio) %}
+                  <div class="col-lg-4 col-md-6 portfolio-item
+                    {% for category in relatedCats %}
+                        filter-{{- category.slug  -}}
+                    {% endfor %}
+                  ">
+                    <img src="{{ block.image.one.url() }}" class="img-fluid" alt="">
+                    <div class="portfolio-info">
+                      <h4>{{ block.heading }}</h4>
+                      <p>{{ block.text }}</p>
+                      <a href="{{ block.image.one.url() }}" data-gall="portfolioGallery" class="venobox preview-link" title="App {{ i + 1 }}"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    -->
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    {#
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p>{{ entry.testimonialText }}</p>
+        </div>
+
+        {% set testimonials = craft.entries.section('testimonials') %}
+        <div class="owl-carousel testimonials-carousel">
+        {% for testimonial in testimonials %}
+          <div class="testimonial-wrap">
+            <div class="testimonial-item">
+              {% set blocks = testimonial.testimonialBody %}
+              {% for block in blocks %}
+                <img src="{{ block.image.one.url }}" class="testimonial-img" alt="{{ block.title }}">
+                <h3>{{ testimonial.title }}</h3>
+                <h4>{{ block.subheading }}</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    {{ block.text }}
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+    #}
+    <!-- End Testimonials Section -->
+
+
+    <!-- ======= Pricing Section ======= -->
+    <!--
+    <section id="pricing" class="pricing">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Pricing</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <h3>Free</h3>
+              <h4><sup>$</sup>0<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li class="na">Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+            <div class="box recommended">
+              <span class="recommended-badge">Recommended</span>
+              <h3>Business</h3>
+              <h4><sup>$</sup>19<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+            <div class="box">
+              <h3>Developer</h3>
+              <h4><sup>$</sup>29<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li>Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    -->
+    <!-- End Pricing Section -->
+
+    <!-- ======= Team Section ======= -->
+    {#
+    <section id="team" class="team section-bg-gray">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Our Team</h2>
+          <p>{{ entry.teamText }}</p>
+        </div>
+        
+        <div id="teamCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% set teams = craft.entries.section('teams') %}
+            {% set count = 0 %}
+            {% for team in teams %}
+              {% set count = count + 1 %}
+              {% if count == 1 %}
+                <div class="carousel-item {{ loop.index == 1 ? 'active' : '' }}">
+                  <div class="row">
+              {% endif %}
+                          
+                  <div class="col-lg-6 {% if count > 1 %} mt-4 {% if count == 2 %} mt-lg-0 {% endif %}{% endif %}" 
+                    
+                    {% if count > 1 %}
+                      data-wow-delay="0.{{ count }}s"
+                    {% endif %}
+                  >
+                    
+                    <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="{{ count }}00">
+                    {% set blocks = team.teamBody %}
+                    {% for block in blocks %}
+                      {% if block | length %}
+                      <div class="pic"><img src="{{ block.image.one.url }}" class="img-fluid" alt=""></div>
+                      <div class="member-info">
+                        <h4>{{ team.title }}</h4>
+                        <span>{{ block.heading }}</span>
+                        <p>{{ block.text }}</p>
+                        {% endif %}
+                      {% endfor %}
+                      {% set sosmedAccounts = team.socialMediaAccount %}
+                        <div class="social">
+                        {% for sosmed in sosmedAccounts %}
+                          <a href=" {{ sosmed.twitter }} "><i class="ri-twitter-fill"></i></a>
+                          <a href=" {{ sosmed.facebook }} "><i class="ri-facebook-fill"></i></a>
+                          <a href=" {{ sosmed.instagram }} "><i class="ri-instagram-fill"></i></a>
+                          <a href=" {{ sosmed.linkedin }} "> <i class="ri-linkedin-box-fill"></i> </a>
+                        {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              {% if count == 4 %}
+                  </div>
+                </div>
+                {% set count = 0 %}  
+              {% endif %}
+            {% endfor %}
+          </div>
+          <a class="carousel-control-prev" href="#teamCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#teamCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        
+      </div>
+    </section>
+    #}
+
+    <!-- End Team Section -->
+
+    <!-- ======= Faq Section ======= -->
+    <!--
+    <section id="faq" class="faq">
+      <div class="container-fluid" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+            <div class="content">
+              <h3>Join With<strong> Us</strong></h3>
+              <p>{{ entry.joinText }}</p>
+            </div>
+
+            <div class="accordion-list">
+              <ul>
+                {% set cariers = craft.entries.section('cariers') %}
+                {% set count = 0 %}
+                {% for carier in cariers %}
+                {% set count = count + 1 %}
+                <li>
+                  <a data-toggle="collapse" class=" {{ loop.index == 1 ? 'collapse' : 'collapsed' }} " href="#accordion-list-{{ count }}">{{ carier.title }} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-{{ count }}" class="collapse {{ loop.index == 1 ? 'show' : '' }} " data-parent=".accordion-list">
+                    <p>{{ carier.jobsDescription }}</p>
+                    <p>{{ carier.jobsRequirement }} </p>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/faq.jpg");'>&nbsp;</div>
+        </div>
+
+      </div>
+    </section>
+    -->
+    <!-- End Faq Section -->
+
+    <!-- ======= Contact Section ======= -->
+    {% include "_singles/contact" %}
+    <!-- End Contact Section -->
+{% endblock %}
