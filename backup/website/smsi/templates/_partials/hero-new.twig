@@ -7,17 +7,18 @@
 	{% set heroBlocks = entry.heroBody.all() %}
 	{% if heroBlocks | length %}
 		{% for hero in heroBlocks %}
-		<section id="hero" class="home d-flex flex-column justify-content-center" style="
+		<section id="hero" class="single d-flex flex-column justify-content-center" style="
 			background: url({{ hero.image.one().url }}) top center;
 			background-attachment: fixed;
 			background-size: cover;
 			background-repeat: no-repeat;
 		">
 			<div class="container">
-				<div class="row justify-content-center">
+				<div class="row justify-content-start">
 					<div class="col-xl-8">
-						<h1>{{ hero.heading }}</h1>
 						<h2>{{ hero.subheading }}</h2>
+						<h1>{{ hero.heading }}</h1>
+						<p>{{ entry.shortDescription }}</p>
 						{# <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
 						data-autoplay="true"></a> #}
 					</div>

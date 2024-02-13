@@ -1,9 +1,15 @@
 {% set navigation = craft.entries.section('navigation') %}
 {% set segments = craft.request.getSegments() %}
-{% set segment = "/" ~ segments|join('/') %}
+{% if segments | length == 1 %}
+	{% set segment = "/" ~ segments|join('/') %}
+{% elseif segments | length == 0 %}
+	{% set segment = "/" %}
+{% else %}
+	{% set segment = segments|join('/') %}
+{% endif %}
 {% set activeLinkUrl = [] %}
 {% for nav in navigation %}
-    {% set activeLinkUrl = activeLinkUrl|merge([nav.linkUrl]) %}
+	{% set activeLinkUrl = activeLinkUrl|merge([nav.linkUrl]) %}
 {% endfor %}
 <!--
 {# <header id="header" class="fixed-top" {% if segment not in activeLinkUrl %}style="background-color: #0f0f0f;"{% endif %}>
@@ -44,38 +50,46 @@
 
 
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top" {% if segment not in activeLinkUrl %}style="background-color: #0f0f0f;" {% endif %}>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-xl-9 d-flex align-items-center justify-content-lg-between">
-                <a href="{{ siteUrl }}" class="logo me-auto me-lg-0"><img src="{{ logo.url }}" alt="" class="img-fluid"></a>
-                <nav id="navbar" class="navbar order-last order-lg-0">
-                    <ul>
-                        {% for page in navigation %}
-                        {% if page.level == 1 %}
-                        <li {% if page.children | length %} class="dropdown" {% endif %}>
-                            <a class="nav-link scrollto {{ craft.app.request.getSegment(1) == page.slug|replace({'-': ''}) ? "active" : "" }}"
-                                href="{{ page.linkUrl }}">
-                                {{- page.title| ucfirst -}}
-                                {% if page.children | length %}<i class="bi bi-chevron-down"></i>{% endif %}
-                            </a>
-                        {% endif %}
-                        {% if page.children | length %}
-                            <ul>
-                            {% set childPage = page.children %}
-                            {% for child in childPage %}
-                                <li><a href="{{ siteUrl }}{{ child.linkUrl }}">{{ child.title }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
-                        </li>
-                    {% endfor %}
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-            </div>
-        </div>
+<header id="header" class="fixed-top" {% if segment not in activeLinkUrl %} style="background-color: #0f0f0f;"{% endif %}>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-xl-9 d-flex align-items-center justify-content-lg-between">
+				<a href="{{ siteUrl }}" class="logo me-auto me-lg-0"><img src="{{ logo.url }}" alt="" class="img-fluid"></a>
+				<nav id="navbar" class="navbar order-last order-lg-0">
+					<ul>
+						{% for page in navigation %}
+						{% if page.level == 1 %}
+						<li {% if page.children | length %} class="dropdown" {% endif %}>
+							<a class="{{ not page.children | length ? "nav-link scrollto" : ""}}{{ craft.app.request.getSegment(1) == page.slug|replace({'-': ''}) ? " active" : " " }}"
+								href="{{ page.linkUrl }}">
+								{% if page.children | length %}
+									<span>{{- page.title| ucfirst -}}</span>
+									<i class="bi bi-chevron-down"></i>
+								{% else %}
+									{{- page.title| ucfirst -}}
+								{% endif %}
+							</a>
+							{% endif %}
+							{% if page.children | length %}
+							<ul>
+								{% set childPage = page.children %}
+								{% for child in childPage %}
+								<li>
+									<a href="{{ siteUrl }}{{ child.linkUrl }}">{{ child.title }}</a>
+								</li>
+								{% endfor %}
+							</ul>
+							{% endif %}
+						</li>
+						{% endfor %}
+					</ul>
+					<i class="bi bi-list mobile-nav-toggle"></i>
+				</nav>
+				<!-- .navbar -->
+			</div>
+		</div>
 
-    </div>
+	</div>
 </header>
+
 <!-- End Header -->

@@ -7,29 +7,14 @@
       <div class="container">
         {% for block in blocks %}
         <div class="row">
-          <div class="col-lg-6 order-2 order-lg-1">
-            <div class="icon-box mt-5 mt-lg-0">
-              <i class="bx bx-receipt"></i>
-              <h4>{{ entry.heading }}</h4>
+          <div class="col-sm-12 col-md-12 col-lg-6 order-2 order-lg-1">
+              <h4 class="mt-5 mt-lg-0">{{ entry.heading }}</h4>
               {{ block.description }}
-            </div>
-            {# <div class="icon-box mt-5">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Harum esse qui</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-images"></i>
-              <h4>Aut occaecati</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-shield"></i>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div> #}
           </div>
-          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("{{ block.image.one.url }}");'></div>
+          {# <div class="image col-sm-12 col-md-12 col-lg-6 order-1 order-lg-2" style='background-image: url("{{ block.image.one.url }}");'> #}
+          <div class="image col-sm-12 col-md-12 col-lg-6 order-1 order-lg-2">
+            <img src="{{ block.image.one ? block.image.one.url : "" }}" class="img-responsive imd-fluid w-100" alt="{{ entry.heading }}">
+          </div>
         </div>
         {% endfor %}
       </div>

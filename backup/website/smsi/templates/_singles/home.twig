@@ -4,94 +4,94 @@
 
 	<!-- ======= Services Section ======= -->
 	<!--
-				    <section id="services" class="services section-bg-gray">
-				      <div class="container" data-aos="fade-up">
-				
-				        <div class="section-title">
-				          <h2>Services</h2>
-				          {{ entry.serviceText }}
-				        </div>
-				
-				        <div class="row">
-				        {% set services = craft.entries.section('services').all() %}
-				        {% set count = 0 %}
-				        {% for service in services %}
-				          {% set serviceBody = service.serviceBody.all() %}
-				          {% if serviceBody | length %}
-				            {% for block in serviceBody %}
-				              {% set count = count + 1 %}
-				              {% if block.type == 'servicePoint' %}
-				                <div class="col-lg-6 col-md-6 d-flex align-items-stretch
-				                  {% if count == 1 %}
-				                  {% elseif count == 2 %}
-				                    mt-4 mt-lg-0
-				                  {% else %}
-				                    mt-4
-				                  {% endif %}
-				                " data-aos="zoom-in" data-aos-delay="{{ count }}00">
-				                  
-				                  <div class="icon-box">
-				                    {# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
-				                    <div class="image-box">
-				                      <img src="{{ block.image.one.url }}" alt="{{ block.image.title }}"/>
-				                    </div>
-				                    <h4><a href="">{{ service.title }}</a></h4>
-				                    <p>{{ block.description }} </p>
-				                  </div>
-				                </div>
-				              {% endif %}
-				            {% endfor %}
-				          {% endif %}
-				        {% endfor %}
-				        </div>
-				
-				      </div>
-				    </section>
-				    -->
+		<section id="services" class="services section-bg-gray">
+			<div class="container" data-aos="fade-up">
+
+			<div class="section-title">
+				<h2>Services</h2>
+				{{ entry.serviceText }}
+			</div>
+
+			<div class="row">
+			{% set services = craft.entries.section('services').all() %}
+			{% set count = 0 %}
+			{% for service in services %}
+				{% set serviceBody = service.serviceBody.all() %}
+				{% if serviceBody | length %}
+				{% for block in serviceBody %}
+					{% set count = count + 1 %}
+					{% if block.type == 'servicePoint' %}
+					<div class="col-lg-6 col-md-6 d-flex align-items-stretch
+						{% if count == 1 %}
+						{% elseif count == 2 %}
+						mt-4 mt-lg-0
+						{% else %}
+						mt-4
+						{% endif %}
+					" data-aos="zoom-in" data-aos-delay="{{ count }}00">
+						
+						<div class="icon-box">
+						{# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
+						<div class="image-box">
+							<img src="{{ block.image.one ? block.image.one.url : "" }}" alt="{{ block.image.title }}"/>
+						</div>
+						<h4><a href="">{{ service.title }}</a></h4>
+						<p>{{ block.description }} </p>
+						</div>
+					</div>
+					{% endif %}
+				{% endfor %}
+				{% endif %}
+			{% endfor %}
+			</div>
+
+			</div>
+		</section>
+		-->
 	{# <section id="service" class="home-section color-dark bg-gray p-0">
-				      <div class="container my-5 py-5 text-center">
-				        <div class="row pb-4">
-				            <div class="col-lg-12">
-				                <div>
-				                    <div class="section-heading text-center">
-				                        <h2 class="h-bold">What we can do for you</h2>
-				                        <div class="divider-header"></div>
-				                    </div>
-				                </div>
-				            </div>
-				        </div>
-				        <div class="row animatedParent">
-				            {% set count = 0 %}
-				            {% for service in services %}
-				                {% set serviceBody = service.serviceBody.all() %}
-				                {% if serviceBody | length %}
-				                    {% for item in serviceBody %}
-				                        {% if item.type == 'servicePoint' %}
-				                            {% set count = count + 1 %}
-				                            <div class="col-md-4">
-				                                <div class="animated rotateInDownLeft">
-				                                    <div class="service-box">
-				                                        <div class="service-icon">
-				                                          <img class="img-responsive" src="{{ item.image.one.url }}" alt="{{ item.image.title }}"/>
-				                                        </div>
-				                                        <div class="service-desc">
-				                                            <h5>{{ service.title }}</h5>
-				                                            <div class="divider-header"></div>
-				                                            <p class="service-body">
-				                                            {{ item.description|striptags|slice(0, 100) ~ '...'   }}
-				                                            </p>
-				                                            <a href="{{ service.url }}" class="btn btn-success">Learn more</a>
-				                                        </div>
-				                                    </div>
-				                                </div>
-				                            </div>
-				                            {% endif %}
-				                    {% endfor %}
-				                {% endif %}
-				            {% endfor %}
-				        </div>
-				      </div>
-				  </section> #}
+			<div class="container my-5 py-5 text-center">
+			<div class="row pb-4">
+				<div class="col-lg-12">
+					<div>
+						<div class="section-heading text-center">
+							<h2 class="h-bold">What we can do for you</h2>
+							<div class="divider-header"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row animatedParent">
+				{% set count = 0 %}
+				{% for service in services %}
+					{% set serviceBody = service.serviceBody.all() %}
+					{% if serviceBody | length %}
+						{% for item in serviceBody %}
+							{% if item.type == 'servicePoint' %}
+								{% set count = count + 1 %}
+								<div class="col-md-4">
+									<div class="animated rotateInDownLeft">
+										<div class="service-box">
+											<div class="service-icon">
+												<img class="img-responsive" src="{{ item.image.one.url }}" alt="{{ item.image.title }}"/>
+											</div>
+											<div class="service-desc">
+												<h5>{{ service.title }}</h5>
+												<div class="divider-header"></div>
+												<p class="service-body">
+												{{ item.description|striptags|slice(0, 100) ~ '...'   }}
+												</p>
+												<a href="{{ service.url }}" class="btn btn-success">Learn more</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endif %}
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			</div>
+			</div>
+		</section> #}
 		<section id="service" class="portservice home-section color-dark bg-gray p-0"> <div class="container my-5 py-5 text-center">
 			<div class="row pb-4">
 				<div class="col-lg-12">
@@ -111,19 +111,20 @@
 						{% for item in serviceBody %}
 							{% if item.type == 'servicePoint' %}
 								{% set count = count + 1 %}
-								<div class="col-md-6 col-sm-4 col-lg-4">
+								<div class="col- col-sm-6 col-md-6 col-lg-4 col-xl-4">
 									<div class="animated rotateInDownLeft">
 										<div class="service-box portservice-item">
 											<figure class="animated rotateInDownLeft">
-												<div class="service-icon py-3">
-													<img src="{{ item.image.one.url }}" class="img-responsive w-100">
+												<div class="service-icon">
+													<img src="{{ item.image.one ? item.image.one.url : siteUrl ~ 'assets/img/features.jpg' }}" class="img-responsive w-100">
 												</div>
 												<figcaption class="text-center">
 													<div class="service-desc">
 														<h5>{{ service.title }}</h5>
 														<div class="divider-header"></div>
 														<div class="service-body d-flex flex-column align-items-center justify-content-center">
-															<p>{{ item.description|striptags|slice(0, 200) ~ '...' }}
+															{# <p>{{ item.description|striptags|slice(0, 210)|raw|replace({'&amp;' : '&'}) ~ '...' }} #}
+															<p>{{ (item.description|striptags|slice(0, 200) ~ '...')|raw  }}
 															</p>
 															<a href="{{ service.url }}" class="my-3 btn btn-success">Learn more</a>
 														</div>
@@ -145,39 +146,39 @@
 
 	<!-- ======= Faq Section ======= -->
 	<!--
-				    <section id="faq" class="faq">
-				      <div class="container-fluid" data-aos="fade-up">
-				        <div class="row">
-				          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-				            <div class="content">
-				              <h3>Join With<strong> Us</strong></h3>
-				              <p>{{ entry.joinText }}</p>
-				            </div>
-				
-				            <div class="accordion-list">
-				              <ul>
-				                {% set cariers = craft.entries.section('cariers') %}
-				                {% set count = 0 %}
-				                {% for carier in cariers %}
-				                {% set count = count + 1 %}
-				                <li>
-				                  <a data-toggle="collapse" class=" {{ loop.index == 1 ? 'collapse' : 'collapsed' }} " href="#accordion-list-{{ count }}">{{ carier.title }} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-				                  <div id="accordion-list-{{ count }}" class="collapse {{ loop.index == 1 ? 'show' : '' }} " data-parent=".accordion-list">
-				                    <p>{{ carier.jobsDescription }}</p>
-				                    <p>{{ carier.jobsRequirement }} </p>
-				                  </div>
-				                </li>
-				                {% endfor %}
-				              </ul>
-				            </div>
-				          </div>
-				
-				          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/faq.jpg");'>&nbsp;</div>
-				        </div>
-				
-				      </div>
-				    </section>
-				    -->
+		<section id="faq" class="faq">
+			<div class="container-fluid" data-aos="fade-up">
+			<div class="row">
+				<div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+				<div class="content">
+					<h3>Join With<strong> Us</strong></h3>
+					<p>{{ entry.joinText }}</p>
+				</div>
+	
+				<div class="accordion-list">
+					<ul>
+					{% set cariers = craft.entries.section('cariers') %}
+					{% set count = 0 %}
+					{% for carier in cariers %}
+					{% set count = count + 1 %}
+					<li>
+						<a data-toggle="collapse" class=" {{ loop.index == 1 ? 'collapse' : 'collapsed' }} " href="#accordion-list-{{ count }}">{{ carier.title }} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+						<div id="accordion-list-{{ count }}" class="collapse {{ loop.index == 1 ? 'show' : '' }} " data-parent=".accordion-list">
+						<p>{{ carier.jobsDescription }}</p>
+						<p>{{ carier.jobsRequirement }} </p>
+						</div>
+					</li>
+					{% endfor %}
+					</ul>
+				</div>
+				</div>
+	
+				<div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/faq.jpg");'>&nbsp;</div>
+			</div>
+	
+			</div>
+		</section>
+		-->
 	<!-- End Faq Section -->
 
 	<!-- ======= Contact Section ======= -->
